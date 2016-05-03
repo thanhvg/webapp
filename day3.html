@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS</title>
+  <style>
+  h1 {
+    background-color: aqua;
+  }
+  .yellow {
+    color: yellow;
+  }
+  #h2 {color: #FF0000; opacity: 0.5}
+  a.set1:link{color:red; text-decoration:none}
+  a.set1:visited{color:yellow; text-decoration:none}
+  a.set2:link{color:navy; text-decoration:none}
+  a.set2:visited{color:aqua; text-decoration:none}
+  div li {
+    color: blue;
+  }
+  input[value] {background-color: violet}
+  input[type="text"] {
+    background-color: yellow;
+  }
+
+  input:hover {
+    background-color: violet;
+  }
+  :hover {
+    background-color: red;
+  }
+
+  </style>
+</head>
+<body>
+  <h1>This is heading 1 </h1>
+  <h1 class="yellow">This is heading 2 </h1>
+  <h1>This is heading 3 </h1>
+  <h1>This is heading 4 </h1>
+  <h1 class="yellow">This is heading 5 </h1>
+  <h1>This is heading 6 </h1>
+  <h2 id="h2"> this is heading h2 no 1 id h2</h2>
+  <h2> this is heading h2 no 2</h2>
+  <h2 class="yellow"> this is heading h2 no 3</h2>
+  <a class="set1" href="http://www.ibm.com">IBM</a>
+  <a class="set2" href="http://www.perl.com">Perl</a>
+  <a href="http://www.dell.com">DELL</a>
+  <div>
+    <ol>
+      <li> item 1</li>
+      <li> item 3</li>
+      <li> item 3</li>
+    </ol>
+
+  </div>
+  <p> outside div </p>
+  <ol>
+    <li> item 1</li>
+    <li> item 3</li>
+    <li> item 3</li>
+  </ol>
+  <form action="bouncer.php">
+    <fieldset>
+      <legend> This one use GET </legend>
+      First name: <br/>
+      <input type="text" name="firstName" /> <br />
+      Last name: <br/>
+      <input type="text" name="lastName" /> <br />
+      Age: </br>
+      <input type="number" name="age" />
+      <br />
+      <input type="radio" name="gender" value="male" class="male" checked> Male<br>
+      <input type="radio" name="gender" value="female" id="female"> Female<br>
+      <input type="radio" name="gender" value="other"> Other <br/>
+      <input type="checkbox" name="vehicle" value="Bike"> I have a bike<br>
+      <input type="checkbox" name="vehicle" value="Car" checked="checked"> I have a car
+      <br />
+      <br />
+      Country: <br />
+      <select name="country">
+        <option value="" selected> Country </option>
+        <option value="CA"> Canada </option>
+        <option value="US"> America </option>
+        <option value="Mexico"> Mexico </option>
+      </select>
+      <br/>
+      <br/>
+      <input type="submit" value="Submit">
+      <input type="reset" value="Reset" />
+    </fieldset>
+  </form>
+</body>
+</html>

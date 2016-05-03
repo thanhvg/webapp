@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="styles.css" />
+  <title>Travel Experts</title>
+
+  <style>
+  radio {
+
+  }
+  .male {font-size: 20px}
+  #female{font-style: italic}
+  </style>
+</head>
+<body>
+  <header>
+    <h1 align="center">Enter Info</h1>
+  </header>
+  <form action="bouncer.php">
+    <fieldset>
+      <legend> This one use GET </legend>
+      First name: <br/>
+      <input type="text" name="firstName" /> <br />
+      Last name: <br/>
+      <input type="text" name="lastName" /> <br />
+      Age: </br>
+      <input type="number" name="age" />
+      <br />
+      <input type="radio" name="gender" value="male" class="male" checked> Male<br>
+      <input type="radio" name="gender" value="female" id="female"> Female<br>
+      <input type="radio" name="gender" value="other"> Other <br/>
+      <input type="checkbox" name="vehicle" value="Bike"> I have a bike<br>
+      <input type="checkbox" name="vehicle" value="Car" checked="checked"> I have a car
+      <br />
+      <br />
+      Country: <br />
+      <select name="country">
+        <option value="" selected> Country </option>
+        <option value="CA"> Canada </option>
+        <option value="US"> America </option>
+
+        <option value="Mexico"> Mexico </option>
+
+      </select>
+      <br/>
+      <br/>
+      <input type="submit" value="Submit">
+      <input type="reset" value="Reset" />
+    </fieldset>
+  </form>
+  <br />
+  <br />
+  <form method="post" action="bouncer.php">
+    <fieldset>
+      <legend> This one use POST </legend>
+      Username: <br />
+      <input type="text" name="userName" /> <br />
+      Password: <br />
+      <input type="password" name="password" /> <br/>
+      <br />
+      <br />
+      <input type="submit" value="Submit" />
+      <input type="reset" value="Reset" />
+    </fieldset>
+  </form>
+
+
+
+</body>
