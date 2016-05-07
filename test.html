@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+  <title> Javasript example 1 </title>
+  <script>
+
+  </script>
+</head>
+<body>
+  <script>
+  var ball = {
+    color:"red",
+    size:10,
+    pump: function() {return "pumping air inside";},
+  };
+  document.write(ball.pump());
+  document.write("<br />");
+  for (var prop in ball) {
+    document.write(prop + ": " + ball[prop] + "<br/>");
+  }
+  var date = new Date(1985,5,6);
+  for (var propDate in date) {
+    document.write(propDate + date[propDate] + "<br/>");
+  }
+// why this date object won't list its properties? because it doesn't
+// know the detailt of date. Date object was not declare here
+
+  </script>
+</body>
+</html>
