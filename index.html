@@ -4,22 +4,73 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="styles.css">
+  <script src="jquery-2.2.3.min"> </script>
+  <script src="script.js"> </script>
   <title>Travel Experts</title>
 </head>
 <body>
-  <header>
-    <h1> <img src="Resources/images/travel.jpg"> Welcome to Travel Experts</h1>
-  </header>
-  <img src="Resources/photos/chichenitza.png" height="200"/>
-  <img src="Resources/photos/comalcalco.png" height="200"/>
-  <img src="Resources/photos/palenque.png" height="200" />
-  <br/>
-  <nav>
-    <a href="contact.html"> <img src="Resources/media/label_Contact_us.gif"/> </a>
-    <a href="register.html"> <img src="Resources/media/label_customer_member_regis.gif"/> </a>
-  </nav>
-  <footer>
-    <p align="center"> &copy2016 Travel Experts</p>
-  </footer>
-</body>
-</html>
+  <div class="wrapper">
+    <header>
+      <div class="banner">
+        <div style="float:left;">
+          <a href="index.html" > <img src="Resources/images/travel.png" class ="linkHover"/> </a>
+        </div>
+        <div style="float:right; width:85%;">
+          <h1 align="center" style="color:yellow">  Welcome to Travel Experts <br> Where do you want to go for today </h1>
+        </div>
+      </div>
+
+      <div style=" clear:both;margin-top:1px" >
+        <div class="inline">
+          <img src="Resources/photos/chichenitza.png" height="200"/>
+        </div>
+        <div class="inline">
+            <img src="Resources/photos/comalcalco.png" height="200"/>
+        </div>
+        <div class="inline">
+          <img src="Resources/photos/palenque.png" height="200" />
+        </div>
+      </div>
+    </header>
+
+    <div class="bar"> </div>
+
+    <div class="sidebar">
+      <nav>
+        <a href="contact.html" > <img class="linkHover" src="Resources/media/label_Contact_us.gif"/> </a>
+        <a href="register.html" > <img class="linkHover" src="Resources/media/label_customer_member_regis.gif"/> </a>
+      </nav>
+    </div>
+
+    <div class="content">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+        sit amet ultricies ante. Sed massa nisl, fermentum ac imperdiet quis,
+        viverra quis diam. Lorem ipsum dolor sit amet, consectetur adipiscing
+        elit. Etiam interdum pretium urna vitae tristique. Cras ullamcorper
+        eget risus non eleifend. Nunc ac nisi ut tellus molestie porta aliquam
+        egestas tellus. Phasellus tempor, enim sed semper dictum, metus ligula
+        viverra diam, sed facilisis dui elit ut metus. In non nunc fermentum,
+        tempor odio quis, facilisis purus. Nulla mattis nisi vitae erat
+        accumsan, id commodo velit laoreet. In sit amet mi volutpat,
+        ullamcorper magna ut, accumsan arcu. Sed posuere quis tortor rhoncus
+        tincidunt. Sed tincidunt, augue aliquam vehicula blandit, ipsum lectus
+        ullamcorper libero, sit amet tempus tortor quam sit amet arcu. Cras in
+        quam quis orci viverra euismod vel interdum nisi. Fusce consequat
+        accumsan luctus. Nam quis lobortis urna, non tempor velit. Phasellus
+        lacus risus, bibendum scelerisque massa ornare, hendrerit molestie
+        libero. Proin bibendum felis placerat urna rhoncus, vitae elementum
+        urna interdum. Sed in malesuada lorem. In et rhoncus risus, at commodo
+        nulla. Sed sit amet nibh sodales, interdum libero sed, sollicitudin
+        elit. Sed id est eget neque tempor interdum. Morbi tellus libero,
+        cursus nec enim ultricies, sagittis rhoncus ligula. Pellentesque odio
+        nisi, dapibus non vestibulum quis, porta eget erat. Phasellus aliquet
+        egestas erat, quis sollicitudin sapien egestas eu.</p>
+      </div>
+      <div class="bar"> </div>
+      <footer>
+        <p align="center"> &copy2016 Travel Experts</p>
+      </footer>
+    </div>
+
+  </body>
+  </html>

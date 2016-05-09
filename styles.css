@@ -1,9 +1,66 @@
 /*img { opacity: 0.5}
 h1 {font-size: 80mm}*/
+html{
+  /*background-image:url("http://cdn3.livescore.com/web/img/bg.gif");*/
+  /*background-repeat: no-repeat;*/
+
+}
 header {
   align-content: center;
   width: 100%;
 }
+.inline{
+  display: inline;
+  border: 1px
+  // margin:auto;
+  //float: left;
+}
+.banner{
+  height: 123px;
+  background-image:url("img/sky.jpg");
+  background-size:contain;
+  //padding: 5px;
+}
+.wrapper{
+  width: 1109px;
+  margin:auto ;
+  background-color: #FFF;
+  position: relative;
+  border: 1px;
+  box-shadow: 0 2px 6px 0 #888;
+  padding: 2px;
+  overflow: hidden;
+
+
+}
+.bar{
+  margin: 0;
+  background-color: green;
+  padding: 2px;
+  clear:both;
+
+}
+.sidebar {
+  float: left;
+  display: inline;
+  width: 30.8%;
+  background-color: green;
+  padding: 2px;
+
+
+}
+.content {
+  float: right;
+  display: inline;
+  width: 65%;
+  padding-right: 10px;
+}
 footer {
   width: 100%;
+  clear: both;
+  padding: 0.5px;
+  background-color: grey;
+}
+.linkHover:hover {
+  box-shadow: 0 0 20px red;
 }
