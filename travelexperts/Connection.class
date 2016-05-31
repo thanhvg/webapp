@@ -1,0 +1,42 @@
+<?php
+
+/** File creator: Gia Thanh Vuong
+ *
+ */
+
+
+Class Connection {
+  private $username = "user";
+  private $password = "password";
+  private $servername = "localhost";
+  private $dbname = "travelexperts";
+  private $conn;
+
+
+  function getConn() {
+    return $this->conn;
+  }
+
+  function __construct() {
+    $this->conn = new mysqli($this->servername, $this->username, $this->password, $this->dbname);
+    // Check connection
+    if ($this->conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
+
+    }
+    //echo "database conneted";
+  }
+
+  function close() {
+    $this->conn->close();
+  }
+
+  // function __destruct() {
+  //   if ($this->conn){
+  //   $this->close();
+  // }
+  // }
+
+}
+
+?>

@@ -1,0 +1,51 @@
+<?php
+
+/** File creator: Gia Thanh Vuong
+ *
+ */
+
+
+include_once('Connection.class');
+class CreditCard {
+  var $CreditCardId;
+  var $CCName;
+  var $CCNumber;
+  var $CCExpiry;
+  var $CustomerId;
+  private $Conn;
+
+  function __construct($CCName, $CCNumber, $CCExpiry, $CustomerId, $Conn) {
+    //$this->$CreditCardId  = $CreditCardId;
+    $this->CCName = $CCName;
+    $this->CCNumber = $CCNumber;
+    $this->CCExpiry = $CCExpiry;
+    $this->CustomerId = $CustomerId;
+    $this->Conn = $Conn;
+
+    $myconn = $Conn->getConn();
+    $sql = "INSERT INTO `creditcards` (`CCName`, `CCNumber`, `CCExpiry`, `CustomerId`) VALUES ( ?, ?, ?, ?)";
+    $stmt = $myconn->prepare($sql);
+    $stmt->bind_param('sssi', $CCName, $CCNumber, $CCExpiry, $CustomerId);
+    if (!$stmt->execute()) { // if failed then die right away
+      printf("Connect failed %s.\n'", $stmt->error);
+      exit();
+    }
+    $this->CreditCardId = $myconn->insert_id;
+    $stmt->close();
+    //$conn->close();
+  }
+
+  function toString() {
+    print("CreditCardId: $this->CreditCardId '\n'");
+    print("CCName: $this->CCName '\n'");
+    print("CCNumber: $this->CCNumber '\n'");
+    print("CCExpiry: $this->CCExpiry '\n'");
+    print("CustomerId: $this->CustomerId '\n'");
+
+  }
+
+
+
+}
+
+?>

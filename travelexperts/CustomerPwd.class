@@ -1,0 +1,75 @@
+<?php
+
+/** File creator: Gia Thanh Vuong
+ *
+ */
+
+include_once('Connection.class');
+class CustomerPwd {
+  var $CustomerId;
+  var $CustFirstName;
+  var $CustLastName;
+  var $CustAddress;
+  var $CustCity;
+  var $CustProv;
+  var $CustPostal;
+  var $CustCountry;
+  var $CustHomePhone;
+  var $CustBusPhone;
+  var $CustEmail;
+  var $CustPwd;
+  // var $AgentId;
+  private $Conn; // connection to database
+
+  function __construct($CustFirstName, $CustLastName, $CustAddress, $CustCity, $CustProv, $CustPostal, $CustCountry, $CustHomePhone, $CustBusPhone, $CustEmail, $CustPwd, $Conn ) {
+    $this->CustFirstName = $CustFirstName;
+    $this->CustLastName = $CustLastName;
+    $this->CustAddress = $CustAddress;
+    $this->CustCity = $CustCity;
+    $this->CustProv = $CustProv;
+    $this->CustPostal = $CustPostal;
+    $this->CustCountry = $CustCountry;
+    $this->CustHomePhone = $CustHomePhone;
+    $this->CustBusPhone = $CustBusPhone;
+    $this->CustEmail = $CustEmail;
+    $this->CustPwd = $CustPwd;
+    $this->Conn = $Conn;
+
+    $myconn = $Conn->getConn();
+    $sql = "INSERT INTO `customers` (`CustFirstName`, `CustLastName`, `CustAddress`, `CustCity`, `CustProv`, `CustPostal`, `CustCountry`, `CustHomePhone`, `CustBusPhone`, `CustEmail`, `CustPwd`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $stmt  = $myconn->prepare($sql);
+    $stmt->bind_param('sssssssiiss', $CustFirstName, $CustLastName, $CustAddress, $CustCity, $CustProv, $CustPostal, $CustCountry, $CustHomePhone, $CustBusPhone, $CustEmail, $CustPwd );
+    if (!$stmt->execute()) { // if failed then die right away
+      printf("Connect failed %s.\n'", $stmt->error);
+      exit();
+    }
+    // get the auto field customer id
+    $this->CustomerId = $myconn->insert_id;
+    $stmt->close();
+    //$conn->close();
+
+  }
+
+  public function toString()
+  {
+    print("CustomerId: $this->CustomerId '\n'");
+    print("CustFirstName: $this->CustFirstName '\n'");
+    print("CustLastName: $this->CustLastName '\n'");
+    print("CustAddress: $this->CustAddress '\n'");
+    print("CustCity: $this->CustCity '\n'");
+    print("CustProv: $this->CustProv '\n'");
+    print("CustPostal: $this->CustPostal '\n'");
+    print("CustCountry: $this->CustCountry '\n'");
+    print("CustHomePhone: $this->CustHomePhone '\n'");
+    print("CustBusPhone: $this->CustBusPhone '\n'");
+    print("CustEmail: $this->CustEmail '\n'");
+
+  }
+
+
+
+
+
+
+}
+ ?>

@@ -1,0 +1,68 @@
+<!-- this manages customer login
+ File creator: Gia Thanh Vuong
+-->
+
+<?php
+include_once("Connection.class");
+
+class CustomerStatus {
+  public $isLoggedIn = false;
+  public $CustomerId;
+
+
+  function __construct() {
+    if (session_id() == "") {
+      session_start();
+    }
+    if (isset($_SESSION['isLoggedIn']) &&  $_SESSION['isLoggedIn'] == true)  {
+      $this->isLoggedIn = true;
+      $this->CustomerId = $_SESSION['CustomerId'];
+    }
+  }
+
+  public function authenticate($email, $pass) { // verify agent, and log him in if OK
+    $conn = new Connection();
+    $myconn = $conn->getConn();
+
+    $sql ="SELECT `CustomerId`, `CustPwd` FROM `customers` WHERE `CustEmail` LIKE '$email'";
+    $result = $myconn->query($sql);
+    if(!$result) {
+      return false;
+    }
+    $row = $result->fetch_assoc();
+    if ($row['CustPwd'] != md5($pass)) {
+      return false;
+    }
+
+    $this->CustomerId = $row['CustomerId'];
+    $this->isLoggedIn = true;
+
+    $this->_setSession();
+
+    $conn->close();
+    return true;
+  }
+
+  public function logout() { //log out agent
+    $this->isLoggedIn = false;
+    if (session_id() == "") {
+      session_start();
+    }
+    $_SESSION['isLoggedIn'] = false;
+    foreach ($_SESSION as $key => $value) {
+      $_SESSION[$key] = "";
+      unset($_SESSION[$key]);
+    }
+    $_SESSION = array();
+    session_destroy();
+  }
+
+  private function _setSession() {
+    if (session_id() == '') {
+      session_start();
+    }
+    $_SESSION['isLoggedIn'] = true;
+    $_SESSION['CustomerId'] = $this->CustomerId;
+  }
+}
+?>

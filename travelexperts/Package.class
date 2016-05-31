@@ -1,0 +1,80 @@
+<?php
+
+/** File creator: Gia Thanh Vuong
+ *
+ */
+
+Class Package {
+  var $pkgID;
+  var $pkgName;
+  var $pkgStartDate;
+  var $pgkEndDate;
+  var $pkgDsc;
+  var $pkgPrice;
+  var $dateFormat = 'Y-m-d';
+  var $startDate;
+  var $endDate;
+  var $thumbnail = 'img/package-default.jpg';
+  var $imgfolder ='img';
+
+
+
+  function isActive() {
+    // return true if startdate is in future
+    if ( time() < strtotime($this->pkgStartDate) ) {
+      return "pgkActive";
+    } else
+
+    return "pkgExpired";
+    //return (1 > 2);
+
+  }
+
+  function display () {
+    printf("%s %s %s %s %s", $this->pkgName,$this->pkgStartDate, $this->pgkEndDate, $this->pkgDsc,$this->pkgPrice);
+    if ( $this->isActive()) {
+      print(" Active <br>");
+    } else {
+      print(" Expired <br>");
+    }
+  }
+
+  function __construct($pkgID, $pkgName, $pkgStartDate, $pgkEndDate, $pkgDsc, $pkgPrice, $thumbnail) {
+    $this->pkgID = $pkgID;
+    $this->pkgName =          $pkgName;
+    $this->pkgStartDate =     $pkgStartDate;
+    $this->pgkEndDate =        $pgkEndDate;
+    $this->pkgDsc =           $pkgDsc;
+    $this->pkgPrice =      $pkgPrice;
+    $this->startDate = new DateTime($pkgStartDate);
+    $this->endDate = new DateTime($pgkEndDate);
+    if (!empty($thumbnail)){
+      $this->thumbnail = $this->imgfolder.'/'.$thumbnail;
+    }
+  }
+
+  function show() {
+    echo "<div class='col-sm-4'>";
+    echo "<div class='panel panel-default'>";
+    $isActive = $this->isActive();
+
+    printf ("<div class=\"panel-heading\"><h4 class=\"text-center\">%s</h4></div>",$this->pkgName );
+    printf("<div class=\"panel-body\"><img src=\"%s\" class=\"img-responsive\" style=\"width:100%%\" alt=\"Image\"></div>", $this->thumbnail );
+    echo "<div class=\"panel-footer\">";
+    echo "<p> $this->pkgDsc </p>";
+    printf ("<p class='%s'> Start date: ",$isActive); echo $this->startDate->format($this->dateFormat); echo "</p>";
+    echo "<p>End date: "; echo $this->endDate->format($this->dateFormat); echo "</p>"; //TODO this one is ugly needs to use printf instead
+    //echo '<p>   $'; echo "$this->pkgPrice</p>";
+    printf ("<p><strong> CAD %0.2f </strong></p>", $this->pkgPrice);
+
+    echo "<button class='btn btn-default $isActive' onclick=\"location.href='packagedetail.php?PackageId=$this->pkgID'\">Package Detail</button>";
+    printf ("<button class=\"btn btn-default %s\" onclick=\"location.href='order.php?PackageId=%s'\">Order Package</button>", $isActive, $this->pkgID );
+    echo "</div>";
+    echo "</div>";
+    echo "</div>";
+  }
+  //*/
+
+
+}
+?>

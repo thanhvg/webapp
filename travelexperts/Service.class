@@ -1,0 +1,11 @@
+<?php
+/* File creator: Gia Thanh Vuong */
+class Service {
+  var $ProdName;
+  var $SupName;
+function __construct($ProdName, $SupName) {
+  $this->ProdName = $ProdName;
+  $this->SupName = $SupName;
+}
+}
+ ?>

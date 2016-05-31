@@ -1,0 +1,57 @@
+<?php
+/** File creator: Gia Thanh Vuong
+ *
+ */
+
+include_once('Connection.class');
+class Booking
+{
+  var $BookingId;
+  var $BookingDate;
+  // var $BookingNo; don't know this value
+  var $TravelerCount;
+  var $CustomerId;
+  var $TripTypeId;
+  var $PackageId;
+  private $Conn; //connection class instance
+
+
+  function __construct($BookingDate, $TravelerCount, $CustomerId, $TripTypeId, $PackageId, $Conn)  {
+    //$this->BookingId = $BookingId;
+    $this->BookingDate = $BookingDate;
+    //$this->BookingNo = $BookingNo;
+    $this->TravelerCount = $TravelerCount;
+    $this->CustomerId = $CustomerId;
+    $this->TripTypeId = $TripTypeId;
+    $this->PackageId = $PackageId;
+    $this->Conn = $Conn;
+
+    //$conn = new Connection();
+    $myconn = $Conn->getConn();
+
+    $sql = "INSERT INTO `bookings` (`BookingDate`, `TravelerCount`, `CustomerId`, `TripTypeId`, `PackageId`) VALUES ( ?, ?, ?, ?, ?)";
+    $stmt  = $myconn->prepare($sql);
+    $stmt->bind_param('sdiii',$BookingDate, $TravelerCount, $CustomerId, $TripTypeId, $PackageId );
+    if (!$stmt->execute()) { // if failed then die right away
+      printf("Connect failed %s.\n'", $stmt->error);
+      exit();
+    }
+    // get the auto field customer id
+    $this->BookingId = $myconn->insert_id;
+    $stmt->close();
+    // $conn->close();
+
+  }
+
+  function toString() {
+    print("BookingId $this->BookingId \n");
+    print("BookingDate $this->BookingDate \n");
+    print("TravelerCount $this->TravelerCount \n");
+    print("TripTypeId $this->TripTypeId \n");
+    print("PackageId $this->PackageId \n");
+    //print("CustomerId $CustomerId \n");
+
+  }
+}
+
+ ?>
